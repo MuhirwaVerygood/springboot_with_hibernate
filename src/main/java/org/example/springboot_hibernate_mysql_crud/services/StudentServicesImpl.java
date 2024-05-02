@@ -2,9 +2,9 @@ package org.example.springboot_hibernate_mysql_crud.services;
 
 import jakarta.transaction.Transactional;
 import org.example.springboot_hibernate_mysql_crud.dao.StudentDao;
-import org.example.springboot_hibernate_mysql_crud.dao.StudentDaoImpl;
 import org.example.springboot_hibernate_mysql_crud.models.Students;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,25 +16,25 @@ public class StudentServicesImpl implements StudentsService{
 
     @Override
     @Transactional
-    public List<Students> getStudents() {
+    public ResponseEntity<List<Students>> getStudents() {
         return studentDao.getStudents();
     }
 
     @Transactional
     @Override
-    public void save(Students student) {
-        studentDao.save(student);
+    public ResponseEntity<Object> save(Students student) {
+        return studentDao.save(student);
     }
 
     @Transactional
     @Override
-    public void delete(Long id) {
-        studentDao.delete(id);
+    public ResponseEntity<String> delete(Long id) {
+       return studentDao.delete(id);
     }
 
     @Transactional
     @Override
-    public void update(Long id, Students student) {
-        studentDao.update(id, student);
+    public ResponseEntity<Object> update(Long id, Students student) {
+       return studentDao.update(id, student);
     }
 }

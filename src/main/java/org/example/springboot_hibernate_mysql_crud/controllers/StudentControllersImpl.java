@@ -1,9 +1,9 @@
 package org.example.springboot_hibernate_mysql_crud.controllers;
 
 import org.example.springboot_hibernate_mysql_crud.models.Students;
-import org.example.springboot_hibernate_mysql_crud.services.StudentServicesImpl;
 import org.example.springboot_hibernate_mysql_crud.services.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,25 +16,25 @@ public class StudentControllersImpl  implements StudentControllers{
 
     @GetMapping
     @Override
-    public List<Students> getStudents() {
+    public ResponseEntity<List<Students>> getStudents() {
         return studentsService.getStudents();
     }
 
     @PostMapping
     @Override
-    public void save( @RequestBody Students student) {
-        studentsService.save(student);
+    public ResponseEntity<Object> save(@RequestBody Students student) {
+     return  studentsService.save(student);
     }
 
     @DeleteMapping("/delete/{id}")
     @Override
-    public void delete(@PathVariable("id") Long id) {
-        studentsService.delete(id);
+    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+      return  studentsService.delete(id);
     }
 
     @PutMapping("/update/{id}")
     @Override
-    public void update( @PathVariable("id") Long id, @RequestBody Students students) {
-        studentsService.update(id, students);
+    public ResponseEntity<Object> update(@PathVariable("id") Long id, @RequestBody Students students) {
+      return   studentsService.update(id, students);
     }
 }
