@@ -1,0 +1,1 @@
+Are you wondering how to use hibernate to map you entities in your springboot application? This was made for you 👏. Visit the codes to see how to map entities , and use ORM model in your application 👆👆
